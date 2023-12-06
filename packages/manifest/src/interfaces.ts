@@ -1,6 +1,5 @@
 export interface ElementData {
   author_data: { [key: string]: unknown };
-  learner_data: { [key: string]: unknown };
 }
 
 export interface Element {

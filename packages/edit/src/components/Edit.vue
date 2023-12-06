@@ -23,8 +23,8 @@ const emit = defineEmits(['save']);
 
 const save_author_data = () => {
   const { data } = props.element;
+  console.log(JSON.stringify(data));  
   const author_data = data.author_data;
-  console.log(author_data);
   emit('save', { ...data, author_data });
 };
 </script>

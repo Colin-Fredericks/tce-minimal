@@ -15,9 +15,6 @@ export const name = 'The most basic of custom elements';
 export const initState: DataInitializer = (): ElementData => ({
   author_data: {
     text: "Input author text here",
-  },
-  learner_data: {
-    text: "Input learner text here",
   }
 });
 

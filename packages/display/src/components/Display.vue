@@ -1,38 +1,67 @@
 <template>
   <div class="tce-root">
-    <p>This is the new Display version of the content element {{ id }}</p>
-    <v-btn class="my-6" @click="submit">Update user state</v-btn>
-    <div>User state: {{ userState }}</div>
     <h2>Learner Data</h2>
     <div>
-      <input 
-        type="text" 
-        v-model="data.learner_data.text" 
-        class="text-input"
-        @change="save_learner_data"
-        />
+      <textarea v-model="pageOptions.text" class="text-input" @change="save_learner_data" />
     </div>
+    <div>Character count: {{ char_count }}</div>
     <v-btn class="my-6" @click="save_learner_data">Save learner data</v-btn>
-    <div><pre><code>{{ data.learner_data }}</code></pre></div>
+
+    <h2>Full learner state</h2>
+    <div>
+      <pre><code>{{ userState }}</code></pre>
+    </div>
+    <v-btn class="my-6" @click="update">Update learner state</v-btn>
+
     <h2>Author Data</h2>
-    <div><pre><code>{{ data.author_data }}</code></pre></div>
+    <div>
+      <pre><code>{{ data.author_data }}</code></pre>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ElementData } from 'tce-manifest';
+import { computed, reactive } from 'vue';
 
 const props = defineProps<{ id: number; data: ElementData; userState: any }>();
 const emit = defineEmits(['interaction', 'save']);
 
-const submit = () => emit('interaction', { id: props.id });
+// "interaction" lets us save the user state
+const update = () => emit('interaction', { id: props.id, event: 'update', learner_data: { 'text': pageOptions.text } });
+
+const pageOptions = reactive({
+  text: "Enter data here",
+});
+
+const char_count = computed(() => {
+  if (!pageOptions.text) return 0;
+  if (typeof pageOptions.text !== 'string') return 0;
+  return pageOptions.text.length;
+});
+
+const pageLoaded = () => {
+
+  if (!props.userState.learner_data) {
+    props.userState.learner_data = {};
+  } else if (!props.userState.learner_data.text) {
+    pageOptions.text = "Enter data here";
+  } else {
+    pageOptions.text = props.userState.learner_data.text;
+  }
+
+  emit('save', { id: props.id, event: 'load' });
+}
 
 const save_learner_data = () => {
-  const { data } = props;
-  const learner_data = data.learner_data;
-  console.log(learner_data);
-  emit('save', { ...data, learner_data });
-};
+  console.log(JSON.stringify(props));
+  const text = pageOptions.text;
+  emit('save', { ...props.userState, text });
+  emit('interaction', { id: props.id, event: 'save', learner_data: { 'text': text } });
+}
+
+pageLoaded();
+
 </script>
 
 <style scoped>
