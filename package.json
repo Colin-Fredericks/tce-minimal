@@ -1,0 +1,53 @@
+{
+  "name": "tce-minimal",
+  "description": "Minimal teaching element that stores author and learner data",
+  "version": "0.0.1",
+  "author": "Colin Fredericks <colin_fredericks@harvard.edu> (https://github.com/Colin-Fredericks)",
+  "type": "module",
+  "exports": {
+    "./edit": {
+      "import": "./packages/edit/dist/index.js",
+      "require": "./packages/edit/dist/index.cjs"
+    },
+    "./display": {
+      "import": "./packages/display/dist/index.js",
+      "require": "./packages/display/dist/index.cjs"
+    },
+    "./server": {
+      "import": "./packages/server/dist/index.js",
+      "require": "./packages/server/dist/index.cjs"
+    }
+  },
+  "scripts": {
+    "dev": "cd ./node_modules/@tailor-cms/tce-boot && pnpm start",
+    "build": "pnpm -r run build",
+    "lint": "pnpm -r run lint",
+    "lint:fix": "pnpm -r run lint --fix",
+    "test": "pnpm playwright test --config ./test/playwright.config.ts"
+  },
+  "bin": {
+    "@tailor-cms/tce-template": "bin/index.cjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.37.1",
+    "@tailor-cms/eslint-config": "0.0.2",
+    "@tailor-cms/tce-boot": "0.2.1",
+    "@types/node": "^20.5.7",
+    "prettier": "^2.7.1",
+    "typescript": "^5.1.6",
+    "vue-template-compiler": "2.7.14",
+    "vue": "2.7.14"
+  },
+  "pnpm": {
+    "packageExtensions": {
+      "vue-template-compiler": {
+        "peerDependencies": {
+          "vue": "2.7.14"
+        }
+      }
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
