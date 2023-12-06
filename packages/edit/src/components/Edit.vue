@@ -1,6 +1,5 @@
 <template>
   <div class="tce-container">
-    <span>This is the Edit version of the content element {{ element?.id }}</span>
     <div>
       <input 
         type="text" 

@@ -1,5 +1,6 @@
 <template>
   <div class="tce-root">
+    <h2>{{ props.data.display_name }}</h2>
     <h2>Learner Data</h2>
     <div>
       <textarea v-model="pageOptions.text" class="text-input" @change="save_learner_data" />

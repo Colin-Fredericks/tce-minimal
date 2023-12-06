@@ -1,5 +1,6 @@
 export interface ElementData {
   author_data: { [key: string]: unknown };
+  display_name: string;
 }
 
 export interface Element {
