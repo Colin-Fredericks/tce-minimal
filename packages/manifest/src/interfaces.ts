@@ -1,3 +1,8 @@
+// Behold, the data structure for everything the author sets in the CMS. 
+// ALL data must be specified here, though you 
+// don't need to specify everything that might be recorded.
+// (e.g. you can put new properties into author_data
+// without adding them here.)
 export interface ElementData {
   author_data: { [key: string]: unknown };
   display_name: string;

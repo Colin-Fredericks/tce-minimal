@@ -5,6 +5,8 @@
 </template>
 
 <script setup lang="ts">
+// Nothing here yet.
+// Copy stuff from SideToolbar.vue when you need it.
 defineProps<{ element: Element }>();
 defineEmits(['save']);
 </script>

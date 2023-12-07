@@ -5,16 +5,20 @@ import type {
 } from './interfaces';
 
 // Element unique id within the target system (e.g. Tailor)
+// You must name your thing here or the platform
+// will probably accidentally munge it.
 export const type = 'VPAL_MINIMAL_CUSTOM_ELEMENT';
 
 // Display name (e.g. shown to the author)
+// You must describe your thing so people know what it is.
 export const name = 'The most basic of custom elements';
 
-// Function which inits element state (data property on the Content Element
-// entity)
+// Function which inits the TE state.
+// You must provide a default authoring state for your thing.
+// You do not need to include student-side state here.
 export const initState: DataInitializer = (): ElementData => ({
   author_data: {
-    text: "Input author text here",
+    instructions: "Input instruction text here",
   },
   display_name: "Minimal TE",
 });
