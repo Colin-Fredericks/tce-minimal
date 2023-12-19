@@ -6,6 +6,13 @@
     -->
     <h2>{{ props.data.display_name }}</h2>
 
+    <!-- Including this to show the URL for the assets folder. -->
+    <div class="hangleft">
+      <img 
+      src="../assets/noun-apothecary-1949519.png" 
+      alt="An apothecary kit with medicine bottle and a morter and pestle."
+      />
+    </div>
     <h3>Instructions</h3>
     <!-- This is set on the authoring side, in the main editing area. -->
     <p>{{ props.data.author_data.instructions }}</p>
@@ -50,6 +57,11 @@
 <script setup lang="ts">
 import { ElementData } from 'tce-manifest';
 import { computed, reactive } from 'vue';
+
+// Pull in a javsacript file from the assets folder
+// and make it available to the component.
+import '../assets/simple.js';
+
 
 const props = defineProps<{ 
     id: number; 
@@ -114,6 +126,9 @@ pageLoaded();
 </script>
 
 <style scoped>
+/* Import the css from the assets folder */
+@import '../assets/simple.css';
+
 .tce-root {
   background-color: transparent;
   margin-top: 1rem;
@@ -141,4 +156,5 @@ pageLoaded();
   border: 1px solid #eee;
   padding: 2px;
 }
+
 </style>

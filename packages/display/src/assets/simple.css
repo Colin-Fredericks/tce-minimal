@@ -1,0 +1,10 @@
+
+.hangleft {
+    float: left;
+    margin-right: 1rem;
+    width: 100px;
+  }
+  
+  .hangleft img {
+    width: 100%;
+  }
