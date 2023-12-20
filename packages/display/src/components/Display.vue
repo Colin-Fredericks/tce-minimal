@@ -7,7 +7,7 @@
     <h2>{{ props.data.display_name }}</h2>
 
     <!-- Including this to show the URL for the assets folder. -->
-    <div class="hangleft">
+    <div class="hangright">
       <img 
       src="../assets/noun-apothecary-1949519.png" 
       alt="An apothecary kit with medicine bottle and a morter and pestle."

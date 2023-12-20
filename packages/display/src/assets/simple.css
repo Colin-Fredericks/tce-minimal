@@ -1,10 +1,10 @@
 
-.hangleft {
-    float: left;
+.hangright {
+    float: right;
     margin-right: 1rem;
     width: 100px;
   }
   
-  .hangleft img {
+  .hangright img {
     width: 100%;
   }
